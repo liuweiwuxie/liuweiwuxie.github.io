@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Frank&#39;s Blog</title>
+  <title>Hypercolumns for Object Segmentation and Fine-grained Localization | Frank&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Frank's Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="CVPR 2015 Oral">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hypercolumns for Object Segmentation and Fine-grained Localization">
+<meta property="og:url" content="http://yoursite.com/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/index.html">
 <meta property="og:site_name" content="Frank's Blog">
-<meta property="og:description">
+<meta property="og:description" content="CVPR 2015 Oral">
+<meta property="og:updated_time" content="2015-09-19T07:24:10.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Frank's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Hypercolumns for Object Segmentation and Fine-grained Localization">
+<meta name="twitter:description" content="CVPR 2015 Oral">
   
     <link rel="alternative" href="/atom.xml" title="Frank&#39;s Blog" type="application/atom+xml">
   
@@ -194,9 +195,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/" class="article-date">
@@ -212,49 +211,104 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/">Hypercolumns for Object Segmentation and Fine-grained Localization</a>
+    <h1 class="article-title" itemprop="name">
+      Hypercolumns for Object Segmentation and Fine-grained Localization
     </h1>
   
 
       </header>
       
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>CVPR 2015 Oral<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Segmentation/">Segmentation</a></li></ul>
 	</div>
 
+        
+
+        <div class="clearfix"></div>
+      </div>
       
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>CVPR 2015 Oral<br><a id="more"></a></p>
+<h1 id="Abstract">Abstract</h1><p>CNN最后一层提取的feature太过于sparse，所以不适合精确位置的定位。之前那些层次<em>可能</em>在定位上会比较精确，但是不一定在提取一些语意信息上面会非常好<br><strong> 如何理解CNN提取出来的feature? </strong></p>
+<h1 id="Introduction">Introduction</h1><p>reasoning at multiple levels of abstraction and scale is necessary.<br>Author认为一个CNN每一层的卷积或者pooling之后的feature map也就像是一个Image pyramids<br>立足于两个很具体的问题：</p>
+<ol>
+<li>simultaneously detection and recognition（<strong>maybe for word detection and recognition</strong>）</li>
+<li>detecting an object and localizing its parts (keypoint or segment out each part)</li>
+</ol>
+<h1 id="Related_Work">Related Work</h1><ol>
+<li>CNN: combine features across multiple levels</li>
+<li>detection and segmentation</li>
+<li>pose estimation and part labeling</li>
+</ol>
+<h1 id="Methodology_Part:">Methodology Part:</h1><h2 id="问题的设定：">问题的设定：</h2><p>一个object detection system已经得到很多检测的结果，每一个检测的结果有：bounding box, 所属类别的标签，score。这些检测的结果是已经进行非极大值抑制之后的结果（大部分的detection都会有NMS这一步）。我们现在所想要做的是在已知bounding box的前提下分割出物体，物体的每个部分或者关键点。<br><strong>Input</strong>:   略微扩大之后的bounding box<br><strong>Output</strong>:  Heatmap(different tasks have different definitions of the heatmap), size: 50x50</p>
+<h2 id="Hypercolumn_representation">Hypercolumn representation</h2><p>keyword: bilinear interpolation, upsample feature map</p>
+<h2 id="Grid_Classifiers">Grid Classifiers</h2><p>Feature maps of convolutions and poolings don’t encode any information of location.<br>这一段也就是说，fully connected layer出来的feature是整个bounding box里面的共享的，是instance-specific。而heatmap上面每一个位置都可以训练一个location-specific的classifier，这样一来global的feature + location-specific classifiers就可以produce出一个instance-specific的prior。<br>然而有three drawbacks that the author didn’t train 2500 classifiers. They adopted <strong>grid classifiers</strong> instead.<br><strong>How grid classifiers work</strong><br>50x50的feature maps分成K x K的grid，在训练的过程中就把所有的kth grid里面的像素拿出来训练第k个classifier。<br>在预测的过程中，每一个位置的结果都是K x K个classifier的一个linear combination（双线性插值的一个变形）</p>
+<h2 id="Efficient_implementation_and_Representation_as_a_neural_network">Efficient implementation and Representation as a neural network</h2><p>We don’t have to resize the feature map to 50 x 50. 之前说了TMD这么多的废话，最后还是把训练grid classifier的这样的一件事情转化成了训练一个卷积层，只不过这个卷积层的channel是K X K</p>
+<h1 id="个人总结">个人总结</h1><p>这篇文章最主要的贡献在于:</p>
+<ol>
+<li>提出了Hypercolumns feature，认为CNN fully connected layer输出的feature具有很好的classify label这样的一个特性，但是过于sparse，并不适合localization的这样一个过程</li>
+<li>提出了一个由bounding box到segmentation的这样的一个CNN framework。</li>
+<li>效果非常好<br>我觉得值得考虑的几件事情：</li>
+<li>upsample是直接进行线性插值？</li>
+<li>K x K grid classifiers的训练好像并没有分开，而是全部结合在了一起。</li>
+<li>segmentation这样一件事情的起始点还是在有了比较好的bounding box的基础上进行</li>
+<li>复现原文结果的代价比较大</li>
+</ol>
+<h1 id="原文Code">原文Code</h1><p><a href="https://github.com/bharath272/sds" target="_blank" rel="external">SDS code</a></p>
 
       
-        <p class="article-more-link">
-          <a  href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
     </div>
     
   </div>
   
+    
+  
 </article>
 
 
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)" data-title="Hypercolumns for Object Segmentation and Fine-grained Localization" data-url="http://yoursite.com/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -278,8 +332,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
