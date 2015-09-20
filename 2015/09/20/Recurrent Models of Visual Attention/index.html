@@ -3,17 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Archives: 2015/9 | Frank&#39;s Blog</title>
+  <title>Recurrent Models of Visual Attention | Frank&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Frank's Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2015/09/index.html">
+  <meta name="description" content="Google DeepMind Attention Model">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Recurrent Models of Visual Attention">
+<meta property="og:url" content="http://yoursite.com/2015/09/20/Recurrent Models of Visual Attention/index.html">
 <meta property="og:site_name" content="Frank's Blog">
-<meta property="og:description">
+<meta property="og:description" content="Google DeepMind Attention Model">
+<meta property="og:image" content="http://ww3.sinaimg.cn/mw690/005QUU8Cgw1ew93ga0g51j30u90nfjz8.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/mw690/005QUU8Cgw1ew93fnjbroj30zk0qetap.jpg">
+<meta property="og:updated_time" content="2015-09-20T10:28:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Frank's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Recurrent Models of Visual Attention">
+<meta name="twitter:description" content="Google DeepMind Attention Model">
   
     <link rel="alternative" href="/atom.xml" title="Frank&#39;s Blog" type="application/atom+xml">
   
@@ -194,84 +197,143 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Recurrent Models of Visual Attention" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/09/20/Recurrent Models of Visual Attention/" class="archive-article-date">
-  	<time datetime="2015-09-20T10:28:58.000Z" itemprop="datePublished">9月 20</time>
+    <div class="article-meta">
+      <a href="/2015/09/20/Recurrent Models of Visual Attention/" class="article-date">
+  	<time datetime="2015-09-20T10:28:58.000Z" itemprop="datePublished">2015-09</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/20/Recurrent Models of Visual Attention/">Recurrent Models of Visual Attention</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Recurrent Models of Visual Attention
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Attention-Model/">Attention Model</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN/">RNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dynamic-visual-control/">dynamic visual control</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/object-classification/">object classification</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
+      </div>
+      
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/" class="archive-article-date">
-  	<time datetime="2015-09-19T07:24:10.000Z" itemprop="datePublished">9月 19</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/">Hypercolumns for Object Segmentation and Fine-grained Localization</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Google DeepMind Attention Model<br><a id="more"></a></p>
+<h1 id="Abstract">Abstract</h1><p><strong>Drawbacks of CNN:</strong> For detection, the complexity of computation increases linearly with the number of image pixels.<br><strong>Model proposed:</strong> RNN select a sequence of regions and only process the selected regions at high resolution.<br><strong>Characteristics of proposed model:</strong> translation invariance, computation is independent of the size of the image, non-differentiable, reinforcement learning</p>
+<h1 id="Introduction">Introduction</h1><p><strong>Why we should use attention Model</strong></p>
+<ol>
+<li>reduce the computation consumption</li>
+<li>focus on the most interesting part to abstract the most correct feature<br><strong>Location of Human attention should be task specific.</strong></li>
+</ol>
+<h1 id="Previous_Work">Previous Work</h1><p>Three methods that have been applied to vision:</p>
+<ol>
+<li>Slide window: exclude useless slide windows as much as possible (No context information for object detection)</li>
+<li>Saliency detectors: low level image properties.</li>
+<li>a sequential decision task.</li>
+</ol>
+<h1 id="The_Recurrent_Attention_Model_(RAM)">The Recurrent Attention Model (RAM)</h1><p><strong>Problem Setting: </strong> the attention problem as the sequential decision process of a goal-directed agent interacting with a visual environment.</p>
+<h2 id="Model:">Model:</h2><p><img src="http://ww3.sinaimg.cn/mw690/005QUU8Cgw1ew93ga0g51j30u90nfjz8.jpg" alt="Attention Model"></p>
+<ol>
+<li>Sensor: retina-like representation, limited bandwidth</li>
+<li>Internal state: like hidden layer in LSTM</li>
+<li>Actions: sensor control and an environment action</li>
+<li>Reward: after an action, the model get a new visual observation and a reward signal r</li>
+<li>Training: i am not sure</li>
+<li>Variance Reduction</li>
+<li>Using a Hybrid Supervised Loss<br><img src="http://ww2.sinaimg.cn/mw690/005QUU8Cgw1ew93fnjbroj30zk0qetap.jpg" alt="Model Architecture"></li>
+</ol>
+<h1 id="Experiments">Experiments</h1><p>Settings of the Attention Model<br>MNIST image classification<br>Playing a simple computer games</p>
+<h1 id="Advantages_of_RAM">Advantages of RAM</h1><ol>
+<li>Focus only on a small part of the image. More efficient</li>
+<li>Be able to handle different scales of the image\</li>
+<li>Learn without ground truth</li>
+</ol>
+<h1 id="Drawbacks_of_Recurrent_Attention_Model_(RAM)">Drawbacks of Recurrent Attention Model (RAM)</h1><ol>
+<li>The number of target is limited. 如果有多个目标，可以把多个目标都可以检测到吗？ </li>
+<li>Applying this kind of method to large scale object recognition and video is still unrealistic. (If I can use R-CNN + RAM)</li>
+<li>retina encoding: if we can adopt another strategy to make the performance better?</li>
+<li>When to stop glimpsing when it has enough information to make a confident classification. I think the change should be made in the reward part.</li>
+</ol>
+<h1 id="My_own_opinion">My own opinion</h1><ol>
+<li>I think the choices related to the action function and the location are very important</li>
+<li>I don’t think for now this method can be used for large scale word detection and recognition.</li>
+<li>I am not familiar with the reinforcement learning, so some parts of this article I cannot understand. And about the whole training procedure, I am not very sure.</li>
+</ol>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Segmentation/">Segmentation</a></li></ul>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Hypercolumns for Object Segmentation and Fine-grained Localization</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Recurrent Models of Visual Attention" data-title="Recurrent Models of Visual Attention" data-url="http://yoursite.com/2015/09/20/Recurrent Models of Visual Attention/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -297,8 +359,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false
