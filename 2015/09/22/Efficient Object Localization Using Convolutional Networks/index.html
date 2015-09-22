@@ -3,17 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Frank&#39;s Blog</title>
+  <title>Efficient Object Localization Using Convolutional Networks | Frank&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Frank's Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="CVPR 2015 Yann LeCunThis paper is using CNN to solve the problem of keypoint localization. The framework is a coarse-to-fine CNN. In my opinion, the contribution of this work :
+
+coarse-to-fine CNN fra">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Efficient Object Localization Using Convolutional Networks">
+<meta property="og:url" content="http://yoursite.com/2015/09/22/Efficient Object Localization Using Convolutional Networks/index.html">
 <meta property="og:site_name" content="Frank's Blog">
-<meta property="og:description">
+<meta property="og:description" content="CVPR 2015 Yann LeCunThis paper is using CNN to solve the problem of keypoint localization. The framework is a coarse-to-fine CNN. In my opinion, the contribution of this work :
+
+coarse-to-fine CNN fra">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/005QUU8Cgw1ewb5p7iufij30k5076my6.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewb5t1sj00j30pi08h0ua.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/005QUU8Cgw1ewb5ulfe23j30h60ahtae.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewb5wszkjbj30ez08bdgv.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/005QUU8Cgw1ewb64hx6rwj30cl02l0sp.jpg">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/005QUU8Cgw1ewb658ifvmj30ce02cmx5.jpg">
+<meta property="og:updated_time" content="2015-09-22T05:41:58.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Frank's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Efficient Object Localization Using Convolutional Networks">
+<meta name="twitter:description" content="CVPR 2015 Yann LeCunThis paper is using CNN to solve the problem of keypoint localization. The framework is a coarse-to-fine CNN. In my opinion, the contribution of this work :
+
+coarse-to-fine CNN fra">
   
     <link rel="alternative" href="/atom.xml" title="Frank&#39;s Blog" type="application/atom+xml">
   
@@ -194,9 +207,7 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-Efficient Object Localization Using Convolutional Networks" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Efficient Object Localization Using Convolutional Networks" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2015/09/22/Efficient Object Localization Using Convolutional Networks/" class="article-date">
@@ -212,12 +223,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/22/Efficient Object Localization Using Convolutional Networks/">Efficient Object Localization Using Convolutional Networks</a>
+    <h1 class="article-title" itemprop="name">
+      Efficient Object Localization Using Convolutional Networks
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coarse-to-fine/">Coarse-to-fine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Multi-resolution/">Multi-resolution</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pose-estimation/">Pose estimation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpatialDropout/">SpatialDropout</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -228,155 +250,93 @@
 <li>spatialDropout</li>
 <li>The performance of this method for keypoint localization is very good.</li>
 </ol>
-<p>We should carefully think about what makes CNN have a poor performance towards localization. For localization of different tasks, what is the difficult problem? like for scene text detection.<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coarse-to-fine/">Coarse-to-fine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Multi-resolution/">Multi-resolution</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pose-estimation/">Pose estimation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpatialDropout/">SpatialDropout</a></li></ul>
-	</div>
+<p>We should carefully think about what makes CNN have a poor performance towards localization. For localization of different tasks, what is the difficult problem? like for scene text detection.<br><a id="more"></a></p>
+<h2 id="Abstract">Abstract</h2><p><strong>1. Pooling layers in the CNN reduce localization accuracy.</strong><br><strong>2. Human joint location estimation</strong><br><strong>3. Cascade</strong></p>
+<h2 id="Introduction">Introduction</h2><p><strong>Advantages of pooling layers:</strong></p>
+<ol>
+<li>prevent over-training</li>
+<li>reduce computational</li>
+<li>invariance to local input transformation<br><strong>Disadvantage of pooling layers:</strong></li>
+<li>limit spatial localization accuracy</li>
+</ol>
+<h2 id="Related_Work">Related Work</h2><p><strong>1. DPM</strong><br><strong>2. CNN</strong>: mapping from input RGB image to XY location adds unnecessary learning complexity which weakens generalization<br><strong>3. Multi-resolution CNN:</strong> <a href="http://arxiv.org/pdf/1406.2984v2.pdf" target="_blank" rel="external">Joint Training of a Convolutional Network and a Graphical Model for Human Pose Estimation</a></p>
+<h2 id="Methods:">Methods:</h2><h4 id="Coarse_Heat-Map_Regression_Model">Coarse Heat-Map Regression Model</h4><p><img src="http://ww2.sinaimg.cn/large/005QUU8Cgw1ewb5p7iufij30k5076my6.jpg" alt="Coarse Heat-Map Regression Model"></p>
+<h4 id="Fine_Heat-Map_Regression_Model">Fine Heat-Map Regression Model</h4><p><img src="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewb5t1sj00j30pi08h0ua.jpg" alt="Cascade Architecture"><br><img src="http://ww4.sinaimg.cn/large/005QUU8Cgw1ewb5ulfe23j30h60ahtae.jpg" alt="Fine Heat-Map network"><br>Before “+”, all the joints share the same parameters, but the last conv layer “128x36x36” is joint-specific.<br><img src="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewb5wszkjbj30ez08bdgv.jpg" alt="Joint Siamese Network"></p>
+<h4 id="Some_details">Some details</h4><ol>
+<li>SpatialDropout: one whole channel of the feature map is dropped out instead of some positions</li>
+<li>Data augmentation: rotation and scale</li>
+<li>Joint training: <ol>
+<li>Coarse heat-map model<br><img src="http://ww2.sinaimg.cn/large/005QUU8Cgw1ewb64hx6rwj30cl02l0sp.jpg" alt="Coarse Loss Function"></li>
+<li>Hold the parameters of coarse heat-map model, train the fine heat-map model<br><img src="http://ww4.sinaimg.cn/large/005QUU8Cgw1ewb658ifvmj30ce02cmx5.jpg" alt="Fine Loss Function"></li>
+<li>Train both: E = E1 + a x E2, a = 0.1<h2 id="Experiments">Experiments</h2><strong>Dataset:</strong> FLIC, MPII-Human-Pose</li>
+</ol>
+</li>
+<li>Compare the impact of pooling on spatial precision</li>
+<li>Compare the performace of cascade model with coarse model only</li>
+<li>Compare the SpatialDropout with standard dropout</li>
+<li>Metion about scale invariance</li>
+</ol>
+<p>I think this work is really good for keypoint detection. But the corse-to-fine strategy can be applied to other probelms.</p>
 
       
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/09/22/Efficient Object Localization Using Convolutional Networks/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-  
-    <article id="post-Recurrent Models of Visual Attention" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/09/20/Recurrent Models of Visual Attention/" class="article-date">
-  	<time datetime="2015-09-20T10:28:58.000Z" itemprop="datePublished">2015-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/20/Recurrent Models of Visual Attention/">Recurrent Models of Visual Attention</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Google DeepMind Attention Model<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Attention-Model/">Attention Model</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN/">RNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dynamic-visual-control/">dynamic visual control</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/object-classification/">object classification</a></li></ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/09/20/Recurrent Models of Visual Attention/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
     </div>
     
   </div>
   
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/09/20/Recurrent Models of Visual Attention/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Recurrent Models of Visual Attention</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
-
-
-
-
-
-  
-    <article id="post-Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/" class="article-date">
-  	<time datetime="2015-09-19T07:24:10.000Z" itemprop="datePublished">2015-09</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/">Hypercolumns for Object Segmentation and Fine-grained Localization</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>CVPR 2015 Oral<br>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Segmentation/">Segmentation</a></li></ul>
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
 	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Efficient Object Localization Using Convolutional Networks" data-title="Efficient Object Localization Using Convolutional Networks" data-url="http://yoursite.com/2015/09/22/Efficient Object Localization Using Convolutional Networks/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -400,8 +360,8 @@
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
