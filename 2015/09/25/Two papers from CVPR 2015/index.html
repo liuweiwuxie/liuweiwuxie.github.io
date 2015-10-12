@@ -3,17 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Top-down | Frank&#39;s Blog</title>
+  <title>Two papers from CVPR 2015 | Frank&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Frank's Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Top-down/index.html">
+  <meta name="description" content="The Application of Two-level Attention Models in Deep Convolutional Neural Network for Fine-grained Image Classification
+Predicting Eye Fixations using Convolutional Neural Networks">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Two papers from CVPR 2015">
+<meta property="og:url" content="http://yoursite.com/2015/09/25/Two papers from CVPR 2015/index.html">
 <meta property="og:site_name" content="Frank's Blog">
-<meta property="og:description">
+<meta property="og:description" content="The Application of Two-level Attention Models in Deep Convolutional Neural Network for Fine-grained Image Classification
+Predicting Eye Fixations using Convolutional Neural Networks">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005QUU8Cgw1ewdhfvdylsj31kw0o3grq.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005QUU8Cgw1ewdhlnb5ulj31im0r4n96.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/005QUU8Cgw1ewdim5v51zj31kw0p7qd4.jpg">
+<meta property="og:updated_time" content="2015-09-25T01:42:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Frank's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Two papers from CVPR 2015">
+<meta name="twitter:description" content="The Application of Two-level Attention Models in Deep Convolutional Neural Network for Fine-grained Image Classification
+Predicting Eye Fixations using Convolutional Neural Networks">
   
     <link rel="alternative" href="/atom.xml" title="Frank&#39;s Blog" type="application/atom+xml">
   
@@ -194,53 +201,153 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Two papers from CVPR 2015" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/09/25/Two papers from CVPR 2015/" class="archive-article-date">
-  	<time datetime="2015-09-25T01:42:50.000Z" itemprop="datePublished">9月 25</time>
+    <div class="article-meta">
+      <a href="/2015/09/25/Two papers from CVPR 2015/" class="article-date">
+  	<time datetime="2015-09-25T01:42:50.000Z" itemprop="datePublished">2015-09</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/25/Two papers from CVPR 2015/">Two papers from CVPR 2015</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Two papers from CVPR 2015
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
 		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bottom-up/">Bottom-up</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Eye-fixation-prediction/">Eye fixation prediction</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fine-grained-image-classification/">Fine-grained image classification</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Multiresoluiton-CNN/">Multiresoluiton CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Top-down/">Top-down</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li>The Application of Two-level Attention Models in Deep Convolutional Neural Network for Fine-grained Image Classification</li>
+<li>Predicting Eye Fixations using Convolutional Neural Networks<a id="more"></a>
+</li>
+</ol>
+<h1 id="Part_One">Part One</h1><h3 id="Problem">Problem</h3><p>The whole process of fine-grained image classification (for an image):</p>
+<ol>
+<li>First of all, where is the object in an image?(Objection Detection)</li>
+<li>After we locate the object in an image, then we should know what the object belongs to. A dog or a cat?</li>
+<li>After we know the category of the object, then we should do the fine-grained classification.</li>
+</ol>
+<h3 id="Difficulty">Difficulty</h3><p>For this kind of problem, what is the difficulty?</p>
+<ol>
+<li>The location: if we cannot locate the object in an image accurately, then it is hard to get the most suitable features for later steps.</li>
+<li>Inter-class &amp; intra-class: we may use the whole features of an object to distinguish a dog from a cat (in most suituation). But when we try to separate different kinds of dog, features we may use are part-level or more detailed features of that object. <strong>How can we teach convolutional neural network to focus on different features that we want? Just from the training dataset? Or in other words, how can we design CNN or change the form of dataset fed into CNN to make it understand what we want?</strong></li>
+<li>Intra-class: how to model all the kinds of objects in one category? How to encode the part information of each object in CNN? (Is it possible to use this paper “DeepID-Net: Deformable Deep Convolutional Neural Networks for Object Detection”)</li>
+</ol>
+<h3 id="Methods_in_this_paper">Methods in this paper</h3><ol>
+<li>Use selective search to generate patches from input images (multi-scale &amp; multi-view)</li>
+<li>Object proposal selection: use FilterNet to select patch images</li>
+<li>Use selected patches to train DomainNet</li>
+<li>Use hidden layers’ filters of DomainNet, perform spectral clustering to group the filters. Then we can get a representative part patch. (I doubt this step)</li>
+<li>Use selected part patched and original imageto build a SVM<br><img src="http://ww1.sinaimg.cn/large/005QUU8Cgw1ewdhfvdylsj31kw0o3grq.jpg" alt="Complete Achitecture"></li>
+</ol>
+<h3 id="Personal_thinking">Personal thinking</h3><ol>
+<li>The input patch images of 4 must contain all <strong>three</strong> the parts of an object. And directly resize the input patch image to the size of receptive field of filter is not wise. Because some patch image may contain the whole part of the object.<br><img src="http://ww1.sinaimg.cn/large/005QUU8Cgw1ewdhlnb5ulj31im0r4n96.jpg" alt="Part-level top-down Attention"></li>
+<li>这篇文章一直claim的点就是他们没有使用object bounding和part-level的annotation，使用的是image-level的annotation.但是实际上selective search+FilterNet已经生成了object-level的bounding box和part-level级别的annotation然后使用DomainNet里面的filter去寻找part-level的annotation.</li>
+</ol>
+<h1 id="Part_Two">Part Two</h1><p>Bottom-up visual saliency can also be inferred via combining information over multiple resolutions.</p>
+<h3 id="Problem:_eye_fixations">Problem: eye fixations</h3><ol>
+<li>Three steps of traditional approaches: early feature extraction, feature contrast inference and contrast integration</li>
+<li>This paper states that we should combine bottom-up saliency information and top-down factors to build a model for predicting eye fixations.</li>
+</ol>
+<h3 id="Contribution_of_this_paper:">Contribution of this paper:</h3><ol>
+<li>Simultaneously follow the three steps of traditional approaches in the framework of CNN</li>
+<li>效果好</li>
+</ol>
+<h3 id="Methods_in_the_paper">Methods in the paper</h3><p><img src="http://ww2.sinaimg.cn/large/005QUU8Cgw1ewdim5v51zj31kw0p7qd4.jpg" alt="The Whole Architecture"></p>
+<ol>
+<li>10-fold cross-validation</li>
+</ol>
+<p>This paper is quite simple.</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/10/06/Saliency Detection by Multi Context Deep Learning/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          Saliency Detection by Multi-Context Deep Learning
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2015/09/25/Recurrent Models of Visual Attention/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Recurrent Models of Visual Attention</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Two papers from CVPR 2015" data-title="Two papers from CVPR 2015" data-url="http://yoursite.com/2015/09/25/Two papers from CVPR 2015/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -266,9 +373,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}

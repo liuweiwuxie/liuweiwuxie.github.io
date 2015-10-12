@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: Segmentation | Frank&#39;s Blog</title>
+  <title>Show Attend and Tell Neural Image Caption Generation with Visual Attention | Frank&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Frank's Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Segmentation/index.html">
+  <meta name="description" content="The work of Bengio. I think this kind of attention model can be used in scene text detection and recognition.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Show Attend and Tell Neural Image Caption Generation with Visual Attention">
+<meta property="og:url" content="http://yoursite.com/2015/10/12/Show Attend and Tell Neural Image Caption Generation with Visual Attention/index.html">
 <meta property="og:site_name" content="Frank's Blog">
-<meta property="og:description">
+<meta property="og:description" content="The work of Bengio. I think this kind of attention model can be used in scene text detection and recognition.">
+<meta property="og:updated_time" content="2015-10-12T02:50:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Frank's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Show Attend and Tell Neural Image Caption Generation with Visual Attention">
+<meta name="twitter:description" content="The work of Bengio. I think this kind of attention model can be used in scene text detection and recognition.">
   
     <link rel="alternative" href="/atom.xml" title="Frank&#39;s Blog" type="application/atom+xml">
   
@@ -194,53 +195,141 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Show Attend and Tell Neural Image Caption Generation with Visual Attention" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/" class="archive-article-date">
-  	<time datetime="2015-09-19T07:24:10.000Z" itemprop="datePublished">9月 19</time>
+    <div class="article-meta">
+      <a href="/2015/10/12/Show Attend and Tell Neural Image Caption Generation with Visual Attention/" class="article-date">
+  	<time datetime="2015-10-12T02:50:08.000Z" itemprop="datePublished">2015-10</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/">Hypercolumns for Object Segmentation and Fine-grained Localization</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Show Attend and Tell Neural Image Caption Generation with Visual Attention
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Segmentation/">Segmentation</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Attention-Model/">Attention Model</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Caption-Generation/">Caption Generation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LSTM/">LSTM</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>The work of Bengio. I think this kind of attention model can be used in scene text detection and recognition.<br><a id="more"></a></p>
+<h2 id="Abstract">Abstract</h2><ol>
+<li>An attention based model: 可以自动地学习描述图片的内容</li>
+<li>Maximizing a variational lower bound</li>
+<li>Visualize how the model learn to fix its gaze on salient objects and generate the corresponding words in the output sequence.</li>
+<li>Three benchmark datasets: Flickr8k, Flickr30k, MS COCO</li>
+</ol>
+<h2 id="Introduction">Introduction</h2><ol>
+<li>salient visual information -&gt; descriptive language: scene understanding</li>
+<li>cnn + rnn: the new methodology</li>
+<li>attention can help!</li>
+<li>models(a soft attention mechanism and a hard attention mechanism) + visualize what the model sees + validate on three datasets</li>
+</ol>
+<h2 id="Related_work">Related work</h2><ol>
+<li>encoder-deconder framework</li>
+<li><strong>Neural networks for caption generation</strong> (popular)</li>
+<li>object detector + RNN(LSTM), go beyond objectness</li>
+</ol>
+<h2 id="Image_Caption_Generation_with_Attention_Mechanism">Image Caption Generation with Attention Mechanism</h2><ol>
+<li>Encoder: cnn features</li>
+<li>Decoder: LSTM<ol>
+<li>how to get context vector: attention model</li>
+<li>用一个权重来给予图片中不同物体一个attention的权重，所以每个时间t时的context vector实际上是图片中物体feature的一个加权和，权重是学习得到的</li>
+</ol>
+</li>
+</ol>
+<h2 id="Learning_Stochastic_“Hard”_vs_Deterministic_“Soft”_Attention">Learning Stochastic “Hard” vs Deterministic “Soft” Attention</h2><ol>
+<li>Hard: sample the attention location each time, 每次图片中选取一个物体来作为attention, 剩下的其实就是怎样用数学来把这样的一个东西用数学模型抽象出来</li>
+<li>Soft</li>
+<li>Doubly stochastic attention：不仅仅要在每个时间段上对attention的权重进行调整，还要在整个时间段上对attention的权重进行调整</li>
+<li>Training procedure：进行训练时候的一些操作</li>
+</ol>
+<h2 id="Experiments">Experiments</h2><ol>
+<li>Evaluate only on a single model (ensembling model)</li>
+<li>Learning to attend</li>
+</ol>
+<h2 id="Contribution_of_this_paper">Contribution of this paper</h2><ol>
+<li>我觉得最大的contribution应该是提出了attention model这样的一个东西到caption generation里面，并且提出了两个attention model，一个是hard的attention model，一个是soft的attention model，并且都用数学的形式把这个给抽象了出来，我觉得这个很可以用到文字的detection and recognition上面来。</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/10/06/Saliency Detection by Multi Context Deep Learning/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Saliency Detection by Multi-Context Deep Learning</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Show Attend and Tell Neural Image Caption Generation with Visual Attention" data-title="Show Attend and Tell Neural Image Caption Generation with Visual Attention" data-url="http://yoursite.com/2015/10/12/Show Attend and Tell Neural Image Caption Generation with Visual Attention/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -266,9 +355,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
