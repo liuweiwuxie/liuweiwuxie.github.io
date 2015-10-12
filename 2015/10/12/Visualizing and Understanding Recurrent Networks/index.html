@@ -3,17 +3,21 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: dynamic visual control | Frank&#39;s Blog</title>
+  <title>Visualizing and Understanding Recurrent Networks | Frank&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Frank's Blog">
-<meta property="og:url" content="http://yoursite.com/tags/dynamic-visual-control/index.html">
+  <meta name="description" content="From Andrej Karpathy and Li Fei-fei, 我觉得没啥意思！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Visualizing and Understanding Recurrent Networks">
+<meta property="og:url" content="http://yoursite.com/2015/10/12/Visualizing and Understanding Recurrent Networks/index.html">
 <meta property="og:site_name" content="Frank's Blog">
-<meta property="og:description">
+<meta property="og:description" content="From Andrej Karpathy and Li Fei-fei, 我觉得没啥意思！">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewym31vau8j30ci048glm.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewym3saua3j311a05qjs4.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewym4efh0fj313804ggme.jpg">
+<meta property="og:updated_time" content="2015-10-12T12:51:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Frank's Blog">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Visualizing and Understanding Recurrent Networks">
+<meta name="twitter:description" content="From Andrej Karpathy and Li Fei-fei, 我觉得没啥意思！">
   
     <link rel="alternative" href="/atom.xml" title="Frank&#39;s Blog" type="application/atom+xml">
   
@@ -194,53 +198,132 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Visualizing and Understanding Recurrent Networks" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2015" class="archive-year">2015</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2015/09/25/Recurrent Models of Visual Attention/" class="archive-article-date">
-  	<time datetime="2015-09-25T01:42:47.000Z" itemprop="datePublished">9月 25</time>
+    <div class="article-meta">
+      <a href="/2015/10/12/Visualizing and Understanding Recurrent Networks/" class="article-date">
+  	<time datetime="2015-10-12T12:51:41.000Z" itemprop="datePublished">2015-10</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2015/09/25/Recurrent Models of Visual Attention/">Recurrent Models of Visual Attention</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Visualizing and Understanding Recurrent Networks
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Attention-Model/">Attention Model</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN/">RNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dynamic-visual-control/">dynamic visual control</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/object-classification/">object classification</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/LSTM/">LSTM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/RNN/">RNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Understanding/">Understanding</a></li></ul>
 	</div>
 
-          
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>From Andrej Karpathy and Li Fei-fei, 我觉得没啥意思！<br><a id="more"></a></p>
+<h2 id="Abstract">Abstract</h2><ol>
+<li>The source of LSTM performance and limitations remain rather poorly understood.</li>
+<li>A comprehensive analysis of their representations, predictions and error types</li>
+<li>Long-range dependencies, n-gram models, error analysis</li>
+</ol>
+<h2 id="Introduction">Introduction</h2><ol>
+<li>首先说，LSTM近来用途很广啊，在语言模型，手写识别与产生，机器翻译， 语音识别，视频分析，产生图片标题方面得到了广泛的应用。</li>
+<li>对LSTM的效果这么好的分析很少（这篇文章claim的点）</li>
+<li>所以作者在接下来的几个方面对LSTM的效果进行了分析（以character-level的语言模型为基础）：<ol>
+<li>有识别可理解高阶模式的cells的存在</li>
+<li>与n-gram模型进行比较，发现LSTM可以更好地encode long-range的信息</li>
+<li>error analysis来为以后特定问题的研究提供了指导</li>
+</ol>
+</li>
+</ol>
+<h2 id="Related_Work">Related Work</h2><ol>
+<li>有很多LSTM的变形，但是我比较关注的是：content-based soft attention mechanisms</li>
+<li>也有很多理解LSTM的文章，但是呢他们都是基于最后针对某一具体task的评价，这篇文章则是关注了LSTM中的激活和预测。</li>
+</ol>
+<h2 id="Experimental_Setup">Experimental Setup</h2><h3 id="Vanilla_RNN">Vanilla RNN</h3><p><img src="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewym31vau8j30ci048glm.jpg" alt="Vanilla RNN"></p>
+<h3 id="LSTM">LSTM</h3><p><img src="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewym3saua3j311a05qjs4.jpg" alt="LSTM"></p>
+<h3 id="GRU">GRU</h3><p><img src="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewym4efh0fj313804ggme.jpg" alt="GRU"></p>
+<h3 id="Character-level_Language_Modeling">Character-level Language Modeling</h3><p>字母级别的语言模型</p>
+<h3 id="Optimization">Optimization</h3><p>实验参数的设置</p>
+<h2 id="Experiment">Experiment</h2><ol>
+<li>Datasets的选取</li>
+<li>针对作者在Introduction中提出的假设进行实验</li>
+</ol>
+<p>这篇paper我觉得没啥意思，我也不大理解，可以不看。。。。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2015/10/12/Show Attend and Tell Neural Image Caption Generation with Visual Attention/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Show Attend and Tell Neural Image Caption Generation with Visual Attention</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到：</span>
+		<a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+		<a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Visualizing and Understanding Recurrent Networks" data-title="Visualizing and Understanding Recurrent Networks" data-url="http://yoursite.com/2015/10/12/Visualizing and Understanding Recurrent Networks/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -266,9 +349,9 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false
 	}
