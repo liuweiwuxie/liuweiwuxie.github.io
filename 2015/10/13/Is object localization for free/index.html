@@ -3,30 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Efficient Object Localization Using Convolutional Networks | Frank&#39;s Blog</title>
+  <title>Is object localization for free | Frank&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CVPR 2015 Yann LeCunThis paper is using CNN to solve the problem of keypoint localization. The framework is a coarse-to-fine CNN. In my opinion, the contribution of this work :
-
-coarse-to-fine CNN fra">
+  <meta name="description" content="I think this paper is very interesting! This paper focuse on the relationship between object classification and localization.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Efficient Object Localization Using Convolutional Networks">
-<meta property="og:url" content="http://yoursite.com/2015/09/22/Efficient Object Localization Using Convolutional Networks/index.html">
+<meta property="og:title" content="Is object localization for free">
+<meta property="og:url" content="http://yoursite.com/2015/10/13/Is object localization for free/index.html">
 <meta property="og:site_name" content="Frank's Blog">
-<meta property="og:description" content="CVPR 2015 Yann LeCunThis paper is using CNN to solve the problem of keypoint localization. The framework is a coarse-to-fine CNN. In my opinion, the contribution of this work :
-
-coarse-to-fine CNN fra">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/005QUU8Cgw1ewb5p7iufij30k5076my6.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewb5t1sj00j30pi08h0ua.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/005QUU8Cgw1ewb5ulfe23j30h60ahtae.jpg">
-<meta property="og:image" content="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewb5wszkjbj30ez08bdgv.jpg">
-<meta property="og:image" content="http://ww2.sinaimg.cn/large/005QUU8Cgw1ewb64hx6rwj30cl02l0sp.jpg">
-<meta property="og:image" content="http://ww4.sinaimg.cn/large/005QUU8Cgw1ewb658ifvmj30ce02cmx5.jpg">
-<meta property="og:updated_time" content="2015-09-22T05:41:58.000Z">
+<meta property="og:description" content="I think this paper is very interesting! This paper focuse on the relationship between object classification and localization.">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/005QUU8Cgw1ewztemkj2gj30ra0g0n0l.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewztfpneb0j30rw0i8jv0.jpg">
+<meta property="og:updated_time" content="2015-10-13T13:35:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Efficient Object Localization Using Convolutional Networks">
-<meta name="twitter:description" content="CVPR 2015 Yann LeCunThis paper is using CNN to solve the problem of keypoint localization. The framework is a coarse-to-fine CNN. In my opinion, the contribution of this work :
-
-coarse-to-fine CNN fra">
+<meta name="twitter:title" content="Is object localization for free">
+<meta name="twitter:description" content="I think this paper is very interesting! This paper focuse on the relationship between object classification and localization.">
   
     <link rel="alternative" href="/atom.xml" title="Frank&#39;s Blog" type="application/atom+xml">
   
@@ -207,11 +197,11 @@ coarse-to-fine CNN fra">
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-Efficient Object Localization Using Convolutional Networks" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Is object localization for free" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/09/22/Efficient Object Localization Using Convolutional Networks/" class="article-date">
-  	<time datetime="2015-09-22T05:42:08.000Z" itemprop="datePublished">2015-09</time>
+      <a href="/2015/10/13/Is object localization for free/" class="article-date">
+  	<time datetime="2015-10-13T13:35:44.000Z" itemprop="datePublished">2015-10</time>
 </a>
     </div>
   
@@ -224,7 +214,7 @@ coarse-to-fine CNN fra">
         
   
     <h1 class="article-title" itemprop="name">
-      Efficient Object Localization Using Convolutional Networks
+      Is object localization for free
     </h1>
   
 
@@ -233,7 +223,7 @@ coarse-to-fine CNN fra">
       <div class="article-info article-info-post">
         
 	<div class="article-tag tagcloud">
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Coarse-to-fine/">Coarse-to-fine</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Multi-resolution/">Multi-resolution</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pose-estimation/">Pose estimation</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SpatialDropout/">SpatialDropout</a></li></ul>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CNN/">CNN</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object-detection/">Object detection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Object-recognition/">Object recognition</a></li></ul>
 	</div>
 
         
@@ -244,39 +234,78 @@ coarse-to-fine CNN fra">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>CVPR 2015 Yann LeCun<br>This paper is using CNN to solve the problem of keypoint localization. The framework is a coarse-to-fine CNN. In my opinion, the contribution of this work :</p>
-<ol>
-<li>coarse-to-fine CNN framework</li>
-<li>spatialDropout</li>
-<li>The performance of this method for keypoint localization is very good.</li>
+        <p>I think this paper is very interesting! This paper focuse on the relationship between object classification and localization.<br><a id="more"></a></p>
+<h2 id="Abstract">Abstract</h2><ol>
+<li>Image-level annotation VS object-level annotation</li>
+<li>A weakly supervised CNN: rely on image-level labels but can output location</li>
+<li>Accruate image-level labels, approximate locations, have performance comparably to its fully-supervised counterparts</li>
 </ol>
-<p>We should carefully think about what makes CNN have a poor performance towards localization. For localization of different tasks, what is the difficult problem? like for scene text detection.<br><a id="more"></a></p>
-<h2 id="Abstract">Abstract</h2><p><strong>1. Pooling layers in the CNN reduce localization accuracy.</strong><br><strong>2. Human joint location estimation</strong><br><strong>3. Cascade</strong></p>
-<h2 id="Introduction">Introduction</h2><p><strong>Advantages of pooling layers:</strong></p>
-<ol>
-<li>prevent over-training</li>
-<li>reduce computational</li>
-<li>invariance to local input transformation<br><strong>Disadvantage of pooling layers:</strong></li>
-<li>limit spatial localization accuracy</li>
-</ol>
-<h2 id="Related_Work">Related Work</h2><p><strong>1. DPM</strong><br><strong>2. CNN</strong>: mapping from input RGB image to XY location adds unnecessary learning complexity which weakens generalization<br><strong>3. Multi-resolution CNN:</strong> <a href="http://arxiv.org/pdf/1406.2984v2.pdf" target="_blank" rel="external">Joint Training of a Convolutional Network and a Graphical Model for Human Pose Estimation</a></p>
-<h2 id="Methods:">Methods:</h2><h4 id="Coarse_Heat-Map_Regression_Model">Coarse Heat-Map Regression Model</h4><p><img src="http://ww2.sinaimg.cn/large/005QUU8Cgw1ewb5p7iufij30k5076my6.jpg" alt="Coarse Heat-Map Regression Model"></p>
-<h4 id="Fine_Heat-Map_Regression_Model">Fine Heat-Map Regression Model</h4><p><img src="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewb5t1sj00j30pi08h0ua.jpg" alt="Cascade Architecture"><br><img src="http://ww4.sinaimg.cn/large/005QUU8Cgw1ewb5ulfe23j30h60ahtae.jpg" alt="Fine Heat-Map network"><br>Before “+”, all the joints share the same parameters, but the last conv layer “128x36x36” is joint-specific.<br><img src="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewb5wszkjbj30ez08bdgv.jpg" alt="Joint Siamese Network"></p>
-<h4 id="Some_details">Some details</h4><ol>
-<li>SpatialDropout: one whole channel of the feature map is dropped out instead of some positions</li>
-<li>Data augmentation: rotation and scale</li>
-<li>Joint training: <ol>
-<li>Coarse heat-map model<br><img src="http://ww2.sinaimg.cn/large/005QUU8Cgw1ewb64hx6rwj30cl02l0sp.jpg" alt="Coarse Loss Function"></li>
-<li>Hold the parameters of coarse heat-map model, train the fine heat-map model<br><img src="http://ww4.sinaimg.cn/large/005QUU8Cgw1ewb658ifvmj30ce02cmx5.jpg" alt="Fine Loss Function"></li>
-<li>Train both: E = E1 + a x E2, a = 0.1<h2 id="Experiments">Experiments</h2><strong>Dataset:</strong> FLIC, MPII-Human-Pose</li>
+<h2 id="Introduction">Introduction</h2><ol>
+<li>Visual object recognition: <ol>
+<li>whether the image contains instances of certain object</li>
+<li>location</li>
+<li>pose</li>
+<li>deformable object has a collection of parts</li>
+<li>each object may be cropped or patially occluded</li>
 </ol>
 </li>
-<li>Compare the impact of pooling on spatial precision</li>
-<li>Compare the performace of cascade model with coarse model only</li>
-<li>Compare the SpatialDropout with standard dropout</li>
-<li>Metion about scale invariance</li>
+<li>Three methods for object recognition:<ol>
+<li>local image features-&gt;bag of visual words-&gt;classifier</li>
+<li>deformable part models</li>
+<li>CNN</li>
 </ol>
-<p>I think this work is really good for keypoint detection. But the corse-to-fine strategy can be applied to other probelms.</p>
+</li>
+<li>For CNN, object-level annotation is very good but not easy to get</li>
+<li>So the author thinks he can do:<ol>
+<li>train CNN with image-level annotation, without location information, 这个问题的难点在于物体可能在不同的位置，不同的尺度，不同的观察点，并且两种经常出现在一起的物体怎么去区分！</li>
+<li>Modifications of CNN: last fully connected layers -&gt; convolutional layers, max-pooling layer at the final, new cost function to learn from image-level supervision</li>
+</ol>
+</li>
+<li>The modified CNN can output image-level labels, also can loalize.</li>
+</ol>
+<h2 id="Related_work">Related work</h2><ol>
+<li>visual recognition最基本的挑战在于怎样对intra-class的appearance和shape进行建模</li>
+<li>what is weakly supervised learning?</li>
+<li>target output in visual recognition: image-level labels, location and bounding boxes of objects, object segmentation, 3D pose and geometry of objects</li>
+<li>其他用CNN和image-level labels的方法并没有探究classification对于location prediction的影响。</li>
+<li>Contribution: <ol>
+<li>end-to-end learning pipeline that learns from complex cluttered scenes containing multiple objects by explicitly searching over possible object locations and scales in the image.</li>
+<li>不光image-level label预测准确，还可以准确地预测大致的位置，并且效果与fully-supervised的方法相比差不多甚至还要好</li>
+</ol>
+</li>
+</ol>
+<h2 id="Network_architecture_for_weakly_supervised_learning">Network architecture for weakly supervised learning</h2><p>Three modifications:</p>
+<h3 id="Convolutional_adaptation_layers">Convolutional adaptation layers</h3><ol>
+<li>Fully connected layers —&gt; convolutional layers</li>
+<li>我觉得主要目的是要使原先最后一个fully connected层输出一个每个位置的预测的结果（对于任意尺寸的输入图片），这样来得到一个receptive window里面物体种类的分数，相应的也就有了这个物体的位置信息</li>
+</ol>
+<h3 id="Global_max-pooling_layer_at_the_output">Global max-pooling layer at the output</h3><ol>
+<li>使从上面一个modification出来的每个位置预测的结果变成一个一维的向量，有利于loss的计算</li>
+</ol>
+<h3 id="Multi-label_classification_loss_function">Multi-label classification loss function</h3><ol>
+<li>Treating a multi-label classification problem as K indepen-dent classification problems</li>
+</ol>
+<h2 id="Weakly_supervised_learning_and_classification">Weakly supervised learning and classification</h2><p>Training:<br><img src="http://ww1.sinaimg.cn/large/005QUU8Cgw1ewztemkj2gj30ra0g0n0l.jpg" alt="Training Procedure"><br>Testing:<br><img src="http://ww3.sinaimg.cn/large/005QUU8Cgw1ewztfpneb0j30rw0i8jv0.jpg" alt="Testing Procedure"><br>This is the implementation of the proposed method:</p>
+<ol>
+<li>pre-train on ImageNet dataset</li>
+<li>stochastic gradient descent with global max-pooling, work for the right position of the right object containing in the image, i think this is the most contribution of this work</li>
+</ol>
+<h2 id="Classification_experiment">Classification experiment</h2><ol>
+<li>Pascal VOC 2012 classification results</li>
+<li>Benefits of sliding-window training</li>
+<li>Benefits of multi-scale training and testing</li>
+<li>Does adding object-level supervision help classificatio?</li>
+</ol>
+<h2 id="Location_prediction_experiments">Location prediction experiments</h2><ol>
+<li>Location prediction metric</li>
+<li>Location prediction results</li>
+<li>Center prediction baseline</li>
+<li>Comparison with R-CNN baseline</li>
+<li>Does adding object-level supervision help location pre- diction?</li>
+<li>The importance of object context</li>
+<li>Predicting extent of objects.</li>
+</ol>
+<h2 id="Conclusion">Conclusion</h2><p>This paper is quite interesting. So I think we should start to think how we can use the results of detection to affect classification or use the results of classification to affect detection?</p>
 
       
     </div>
@@ -286,18 +315,18 @@ coarse-to-fine CNN fra">
     
 <nav id="article-nav">
   
-    <a href="/2015/09/25/Recurrent Models of Visual Attention/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/10/13/Visualizing and Understanding Recurrent Networks/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          Recurrent Models of Visual Attention
+          Visualizing and Understanding Recurrent Networks
         
       </div>
     </a>
   
   
-    <a href="/2015/09/19/Hypercolumns for Object Segmentation and Fine-grained Localization (CVPR 2015 Oral)/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hypercolumns for Object Segmentation and Fine-grained Localization</div>
+    <a href="/2015/10/13/Image Super Resolution Using Deep Convolutional Networks/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Image Super Resolution Using Deep Convolutional Networks</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -326,7 +355,7 @@ coarse-to-fine CNN fra">
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="Efficient Object Localization Using Convolutional Networks" data-title="Efficient Object Localization Using Convolutional Networks" data-url="http://yoursite.com/2015/09/22/Efficient Object Localization Using Convolutional Networks/"></div>
+	<div class="ds-thread" data-thread-key="Is object localization for free" data-title="Is object localization for free" data-url="http://yoursite.com/2015/10/13/Is object localization for free/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
